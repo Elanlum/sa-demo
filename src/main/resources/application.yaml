@@ -1,0 +1,8 @@
+server:
+  port: 8181
+  shutdown: graceful
+
+spring:
+  application:
+    name:
+      sa-demo

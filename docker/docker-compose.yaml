@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  sa-demo:
+    container_name: sa-demo
+    image: sa-demo:0.0.1-SNAPSHOT
+    ports:
+      - "8181:8181"
+    networks:
+      - sa-demo
+
+  postgres:
+    image: postgres:16.0
+    container_name: sa-demo-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=sa
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=sa
+    networks:
+      - sa-demo
+
+networks:
+  sa-demo:
+    name: sa-demo
+    driver: bridge
